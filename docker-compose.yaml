@@ -1,0 +1,11 @@
+version: "5.0.0"
+
+services:
+  app:
+    container_name: react_as_docker
+    image: noorcoder/react_as_docker
+    build: 
+      context: .
+      target: production
+    ports: 
+        - "80:80"
