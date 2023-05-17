@@ -3,11 +3,15 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                    echo 'Building..'
-                    script {
-                        sh 'docker build .'   
+            agent {
+                docker {
+                    steps {
+                        echo 'Building..'
+                        script {
+                            sh 'docker build .'   
+                        }
                     }
+                }
             }
         }
         stage('Test') {
