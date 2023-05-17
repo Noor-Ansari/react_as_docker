@@ -3,14 +3,10 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    steps {
-                        echo 'Building..'
-                        script {
-                            sh 'docker build .'   
-                        }
-                    }
+            steps {
+                echo 'Building..'
+                script {
+                    sh 'docker build .'   
                 }
             }
         }
