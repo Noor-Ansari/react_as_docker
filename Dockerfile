@@ -1,8 +1,8 @@
 # Project build
 
-FROM node:16-alpine as builder
+FROM node:16 as builder
 
-WORKDIR app/
+WORKDIR /usr/app
 
 COPY package.json .
 
@@ -19,7 +19,7 @@ FROM nginx:1.23.4-alpine-slim as production
 
 ENV NODE_ENV production
 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /usr/app/build /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
